@@ -12,9 +12,9 @@ services:
     #
     # TODO: Get database migrations to work with the latest point releases of
     # MariaDB 10.4.
-    image: mariadb:10.4.30
+    image: mysql:8.0
     ports:
-      - 3306:3306
+      - 3307:3307
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: "yes"
       MYSQL_DATABASE: stevedb
@@ -24,7 +24,7 @@ services:
   app:
     build: .
     links:
-      - "db:mariadb"
+      - "db:mysql"
     volumes:
       - .:/code
     ports:
